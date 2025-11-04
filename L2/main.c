@@ -52,7 +52,7 @@ void char2int(const char s[100], int numb[21])
     printf("\n");
 }
 
-void strcpy(const char dest[100], const char scr[100])
+void sstrcpy(char dest[100], const char scr[100])
 {
     int i;
     
@@ -204,65 +204,91 @@ void getIIN(const int numb[21], char result[100])
     {
         case 2:
         {
-            strcpy(result,"MasterCard");
+            sstrcpy(result,"MasterCard");
             break;
         }
         case 3:
         {
             switch(numb[1])
             {
-                case 4:7:
+                case 4:
+                case 7:
                 {
-                    strcpy(result,"American Express");
+                    sstrcpy(result,"American Express");
                     break;
                 }
-                case 0:6:8:9:
+                case 0:
+                case 6:
+                case 8:
+                case 9:
                 {
-                    strcpy(result,"Dinners Club International");
+                    sstrcpy(result,"Dinners Club International");
                     break;
                 }
             }
+
+            break;
         }
         case 4:
         {
-            strcpy(result,"Visa");
+            sstrcpy(result,"Visa");
             break;
         }
         case 5:
         {
             switch(numb[1])
             {
-                case 0:8:
+                case 0:
+                case 8:
                 {
-                    strcpy(result,"MasterCard");
+                    sstrcpy(result,"MasterCard");
                     break;
                 }
-                case 1:2:3:4:5:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
                 {
-                    strcpy(result,"Maestro");
+                    sstrcpy(result,"Maestro");
                     break;
                 }
             }
+
+            break;
         }
         case 6:
         {
-            strcpy(result,"Maestro");
+            sstrcpy(result,"Maestro");
             break;
         }
         default:
-            strcpy(result,"etc");
+            sstrcpy(result,"0");
     }
 }
 
 void validate(int numb[21] ,const int *len)
 {
-    if(vaildBCardLen(len))
+    if(validBCardLen(len))
     {
+        char iin[100] = "";
+        getIIN(numb, iin);
+
+        printf("\n%s\n\n", iin);
+
         if(luhn(numb, len))
         {
-            char iin[100] = "";
-            getIIN(numb, iin);
+            switch (iin[0])
+            {
+                case '0':
+                    fout("egyeb");
+                    break;
+                default:
+                    fout(iin);
+                    break;
+            }
         }
+        else fout("ervenytelen");
     }
 }
 
