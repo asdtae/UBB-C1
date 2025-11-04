@@ -48,6 +48,8 @@ void char2int(const char s[100], int numb[21])
         printf("%d %d\n", i, numb[j-1]);
         i++;
     }
+
+    printf("\n");
 }
 
 void fout(const char s[100])
@@ -128,10 +130,54 @@ bool bCardVaildLen(const int *len)
     return true;
 }
 
-bool luhn(int numb[21], const int *len)
+bool luhn(const int numb[21], const int *len)
 {
     const int control = numb[*len - 1];
-    printf("Control: %d\n", control);
+    printf("%sControl: %d%s\n",Bright_Magenta,control,Bright_White);
+
+    int invNumb[21] = {0};
+    for(int i = *len - 2, k = 0; i >= 0; i--, k++)
+    {
+        printf("%scurrent numb[%d]: %d%s\n",Bright_Cyan,i,numb[i],Bright_White);
+        invNumb[k] = numb[i];
+    }
+
+    printf("\n");
+    for(int i = 0; i < *len - 1; i++) printf("%d ",numb[i]);
+    printf("\n");
+    for(int i = 0; i < *len - 1; i++) printf("%d ",invNumb[i]);
+    printf("\n");
+
+    for(int i = 0; i < *len - 1; i++)
+    {
+        if(i%2 == 0)
+        {
+            invNumb[i] *= 2;
+            printf("%s%d %s",Bright_Yellow,invNumb[i],Bright_White);
+        }
+        else printf("%d ",invNumb[i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i < *len - 1; i++)
+    {
+        if(invNumb[i] > 9)
+        {
+            invNumb[i] -= 9;
+            printf("%s%d %s",Bright_Red,invNumb[i],Bright_White);
+        }
+        else printf("%d ",invNumb[i]);
+    }
+    printf("\n");
+
+    int checkSum = 0;
+    for(int i = 0; i < *len - 1; i++) checkSum += invNumb[i];
+    printf("\npre-mod chs: %d\n",checkSum);
+
+    checkSum %= 10;
+    printf("chs: %s%d %scontrol: %s%d%s",Bright_Red,checkSum,Bright_White,Bright_Green,control,Bright_White);
+
+    if(checkSum == control) return true;
 
     return false;
 }
@@ -151,7 +197,7 @@ void validate(int numb[21] ,const int *len)
     {
         if(luhn(numb, len))
         {
-            ;
+            printf("\n\n%d\n", getIIN(numb));
         }
     }
 }
