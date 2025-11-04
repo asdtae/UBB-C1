@@ -52,6 +52,22 @@ void char2int(const char s[100], int numb[21])
     printf("\n");
 }
 
+void strcpy(const char dest[100], const char scr[100])
+{
+    int i;
+    
+    for(i=0; i<100; i++) dest[i] = "";
+    i=0;
+    
+    while(scr[i] != '\0')
+    {
+        dest[i] = scr[i];
+        i++;
+    }    
+    
+    dest[i] = '\0';
+}
+
 void fout(const char s[100])
 {
     FILE *OutFile;
@@ -182,13 +198,60 @@ bool luhn(const int numb[21], const int *len)
     return false;
 }
 
-int getIIN(const int numb[21])
+void getIIN(const int numb[21], char result[100])
 {
-    if( numb[0] > 1 && numb[0] < 7)
+    switch(numb[0])
     {
-        return -1;
+        case 2:
+        {
+            strcpy(result,"MasterCard");
+            break;
+        }
+        case 3:
+        {
+            switch(numb[1])
+            {
+                case 4:7:
+                {
+                    strcpy(result,"American Express");
+                    break;
+                }
+                case 0:6:8:9:
+                {
+                    strcpy(result,"Dinners Club International");
+                    break;
+                }
+            }
+        }
+        case 4:
+        {
+            strcpy(result,"Visa");
+            break;
+        }
+        case 5:
+        {
+            switch(numb[1])
+            {
+                case 0:8:
+                {
+                    strcpy(result,"MasterCard");
+                    break;
+                }
+                case 1:2:3:4:5:
+                {
+                    strcpy(result,"Maestro");
+                    break;
+                }
+            }
+        }
+        case 6:
+        {
+            strcpy(result,"Maestro");
+            break;
+        }
+        default:
+            strcpy(result,"etc");
     }
-    return 0;
 }
 
 void validate(int numb[21] ,const int *len)
@@ -197,7 +260,8 @@ void validate(int numb[21] ,const int *len)
     {
         if(luhn(numb, len))
         {
-            printf("\n\n%d\n", getIIN(numb));
+            char iin[100] = "";
+            getIIN(numb, iin);
         }
     }
 }
