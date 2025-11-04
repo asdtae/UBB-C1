@@ -139,7 +139,7 @@ void fin(int numb[21], int *sLen)
     fclose(InFile);
 }
 
-bool bCardVaildLen(const int *len)
+bool validBCardLen(const int *len)
 {
     if( *len < 12 || *len > 19) return false;
 
@@ -256,7 +256,7 @@ void getIIN(const int numb[21], char result[100])
 
 void validate(int numb[21] ,const int *len)
 {
-    if(bCardVaildLen(len))
+    if(vaildBCardLen(len))
     {
         if(luhn(numb, len))
         {
