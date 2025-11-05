@@ -154,14 +154,14 @@ bool luhn(const int numb[21], const int *len)
     int invNumb[21] = {0};
     for(int i = *len - 2, k = 0; i >= 0; i--, k++)
     {
-        printf("%scurrent numb[%d]: %d%s\n",Bright_Cyan,i,numb[i],Bright_White);
+        printf("%scurrent numb[%02d]: %d%s\n",Bright_Cyan,i,numb[i],Bright_White);
         invNumb[k] = numb[i];
     }
 
     printf("\n");
-    for(int i = 0; i < *len - 1; i++) printf("%d ",numb[i]);
+    for(int i = 0; i < *len - 1; i++) printf("%2d ",numb[i]);
     printf("\n");
-    for(int i = 0; i < *len - 1; i++) printf("%d ",invNumb[i]);
+    for(int i = 0; i < *len - 1; i++) printf("%2d ",invNumb[i]);
     printf("\n");
 
     for(int i = 0; i < *len - 1; i++)
@@ -169,9 +169,9 @@ bool luhn(const int numb[21], const int *len)
         if(i%2 == 0)
         {
             invNumb[i] *= 2;
-            printf("%s%d %s",Bright_Yellow,invNumb[i],Bright_White);
+            printf("%s%2d %s",Bright_Yellow,invNumb[i],Bright_White);
         }
-        else printf("%d ",invNumb[i]);
+        else printf("%2d ",invNumb[i]);
     }
     printf("\n");
 
@@ -180,9 +180,9 @@ bool luhn(const int numb[21], const int *len)
         if(invNumb[i] > 9)
         {
             invNumb[i] -= 9;
-            printf("%s%d %s",Bright_Red,invNumb[i],Bright_White);
+            printf("%s%2d %s",Bright_Red,invNumb[i],Bright_White);
         }
-        else printf("%d ",invNumb[i]);
+        else printf("%2d ",invNumb[i]);
     }
     printf("\n");
 
@@ -200,71 +200,17 @@ bool luhn(const int numb[21], const int *len)
 
 void getIIN(const int numb[21], char result[100])
 {
-    switch(numb[0])
-    {
-        case 2:
-        {
-            sstrcpy(result,"MasterCard");
-            break;
-        }
-        case 3:
-        {
-            switch(numb[1])
-            {
-                case 4:
-                case 7:
-                {
-                    sstrcpy(result,"American Express");
-                    break;
-                }
-                case 0:
-                case 6:
-                case 8:
-                case 9:
-                {
-                    sstrcpy(result,"Dinners Club International");
-                    break;
-                }
-            }
+   int sec = 0;
+   for(int i=0; i<4; i++)
+   {
+       sec *= 10;
+       sec += numb[i];
+       printf("%d\n", sec);
 
-            break;
-        }
-        case 4:
-        {
-            sstrcpy(result,"Visa");
-            break;
-        }
-        case 5:
-        {
-            switch(numb[1])
-            {
-                case 0:
-                case 8:
-                {
-                    sstrcpy(result,"MasterCard");
-                    break;
-                }
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                {
-                    sstrcpy(result,"Maestro");
-                    break;
-                }
-            }
+       result[i] = numb[i] + '0';
+   }
 
-            break;
-        }
-        case 6:
-        {
-            sstrcpy(result,"Maestro");
-            break;
-        }
-        default:
-            sstrcpy(result,"0");
-    }
+   if((sec/1000) == 4) printf("%\n", sec);
 }
 
 void validate(int numb[21] ,const int *len)
