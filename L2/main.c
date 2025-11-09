@@ -149,22 +149,24 @@ bool validBCardLen(const int *len)
 bool luhn(const int numb[21], const int *len)
 {
     const int control = numb[*len - 1];
+    int i, k;
+
     printf("%sControl: %d%s\n",Bright_Magenta,control,Bright_White);
 
     int invNumb[21] = {0};
-    for(int i = *len - 2, k = 0; i >= 0; i--, k++)
+    for(i = *len - 2, k = 0; i >= 0; i--, k++)
     {
-        printf("%scurrent numb[%02d]: %d%s\n",Bright_Cyan,i,numb[i],Bright_White);
+        printf("%scurrent numb[%s%02d%s]: %s%d%s\n",Bright_Cyan,Bright_White,i,Bright_Cyan,Bright_Blue,numb[i],Bright_White);
         invNumb[k] = numb[i];
     }
 
     printf("\n");
-    for(int i = 0; i < *len - 1; i++) printf("%2d ",numb[i]);
+    for(i = 0; i < *len - 1; i++) printf("%2d ",numb[i]);
     printf("\n");
-    for(int i = 0; i < *len - 1; i++) printf("%2d ",invNumb[i]);
+    for(i = 0; i < *len - 1; i++) printf("%2d ",invNumb[i]);
     printf("\n");
 
-    for(int i = 0; i < *len - 1; i++)
+    for(i = 0; i < *len - 1; i++)
     {
         if(i%2 == 0)
         {
@@ -175,7 +177,7 @@ bool luhn(const int numb[21], const int *len)
     }
     printf("\n");
 
-    for(int i = 0; i < *len - 1; i++)
+    for(i = 0; i < *len - 1; i++)
     {
         if(invNumb[i] > 9)
         {
@@ -186,8 +188,14 @@ bool luhn(const int numb[21], const int *len)
     }
     printf("\n");
 
+    printf("\n%d\n\n",*len);
+
     int checkSum = 0;
-    for(int i = 0; i < *len - 1; i++) checkSum += invNumb[i];
+    for(i = 0; i < *len - 1; i++)
+    {
+        printf("chs, invNumb[%d]: %s%d%s, %s%d%s\n",i,Bright_Green,checkSum,Bright_White,Bright_Red,invNumb[i],Bright_White);
+        checkSum += invNumb[i];
+    }
     printf("\npre-mod chs: %d\n",checkSum);
 
     checkSum %= 10;
@@ -210,7 +218,33 @@ void getIIN(const int numb[21], char result[100])
        result[i] = numb[i] + '0';
    }
 
-   if((sec/1000) == 4) printf("%\n", sec);
+   if((sec/1000) == 4)
+   {
+       printf("Visa: %d\n", sec);
+       sstrcpy(result,"Visa");
+   }
+   else if(((sec/100) == 34) || ((sec/100) == 37))
+   {
+       printf("American Express: %d\n", sec);
+       sstrcpy(result,"American Express");
+   }
+   else if(((sec/100) == 30) || ((sec/100) == 36) || ((sec/100) == 38) || ((sec/100) == 39))
+   {
+       printf("Diners Club International: %d\n", sec);
+       sstrcpy(result,"Diners Club International");
+   }
+   else if((sec == 5018) || (sec == 5020) || (sec == 5038) || (sec == 5893)
+        || (sec == 6304) || (sec == 6759) || (sec == 6761) || (sec == 6762)
+        || (sec == 6763))
+   {
+       printf("Maestro: %d\n", sec);
+       sstrcpy(result,"Maestro");
+   }
+   else if(((sec > 2220) && (sec < 2721)) || ((sec > 50) && (sec < 56)))
+   {
+       printf("Mastercard: %d\n", sec);
+       sstrcpy(result,"Mastercard");
+   }
 }
 
 void validate(int numb[21] ,const int *len)
@@ -233,6 +267,8 @@ void validate(int numb[21] ,const int *len)
                     fout(iin);
                     break;
             }
+
+            printf("\nValid\n\n");
         }
         else fout("ervenytelen");
     }
