@@ -272,7 +272,7 @@ void validate(int numb[21] ,const int *len)
         {
             fout(iin);
 //            printf("\n");
-            printf("Valid: %s\n\n",iin);
+//            printf("Valid: %s\n\n",iin);
         }
         else fout("ervenytelen");
     }
@@ -291,8 +291,8 @@ int main()
 
     //fout(c1.cardNbr);
 
-    getchar();
-    getchar();
+//    getchar();
+//    getchar();
     return 0;
 }
 
