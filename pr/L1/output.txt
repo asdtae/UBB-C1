@@ -1,1 +1,0 @@
-Nem sikerult beolvasni az allomanyt (fopen_s hiba: 2).
