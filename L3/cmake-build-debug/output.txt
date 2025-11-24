@@ -1,0 +1,99 @@
+fibonacci(43) = 433494437
+normal function
+#1 run: 0.033000
+#2 run: 0.017000
+#3 run: 0.020000
+#4 run: 0.014000
+#5 run: 0.012000
+average: 0.019000
+
+fibonacci(43) = 433494437
+inline function
+#1 run: 0.023000
+#2 run: 0.014000
+#3 run: 0.016000
+#4 run: 0.013000
+#5 run: 0.014000
+average: 0.016000
+
+fibonacci(43) = 433494437
+macro function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(43) = 433494437
+macro function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(63) = 6557470319842
+macro function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(63) = 6557470319842
+normal function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(53) = 53316291173
+normal function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(43) = 433494437
+normal function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+
+fibonacci(43) = 433494437
+normal function
+#1 run: 0.002000
+#2 run: 0.001000
+#3 run: 0.003000
+#4 run: 0.002000
+#5 run: 0.002000
+average: 0.002000
+
+fibonacci(43) = 433494437
+macro function
+#1 run: 0.002000
+#2 run: 0.002000
+#3 run: 0.001000
+#4 run: 0.003000
+#5 run: 0.003000
+average: 0.002000
+
+fibonacci(43) = 433494437
+macro function
+#1 run: 0.000000
+#2 run: 0.000000
+#3 run: 0.000000
+#4 run: 0.000000
+#5 run: 0.000000
+average: 0.000000
+

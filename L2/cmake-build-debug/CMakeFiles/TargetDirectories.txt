@@ -1,3 +1,3 @@
-D:/github/UBB-C1/L2/cmake-build-debug/CMakeFiles/L2.dir
-D:/github/UBB-C1/L2/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/github/UBB-C1/L2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+E:/GitHub/UBB-C1/L2/cmake-build-debug/CMakeFiles/L2.dir
+E:/GitHub/UBB-C1/L2/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/GitHub/UBB-C1/L2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

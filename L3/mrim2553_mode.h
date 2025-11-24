@@ -1,0 +1,6 @@
+#ifndef L3_MRIM2553_MODE_H
+#define L3_MRIM2553_MODE_H
+
+#define MODE 3
+
+#endif //L3_MRIM2553_MODE_H
