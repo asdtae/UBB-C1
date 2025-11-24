@@ -54,7 +54,10 @@ void char2int(const char s[100], int numb[21])
 
 void sstrcpy(char dest[100], const char scr[100])
 {
-    int i=0;
+    int i;
+    
+    for(i=0; i<100; i++) dest[i] = "";
+    i=0;
     
     while(scr[i] != '\0')
     {
@@ -286,39 +289,10 @@ int main()
     fin(c1.cardNbr,&c1.cardNbrLen);
     validate(c1.cardNbr,&c1.cardNbrLen);
 
-    // fout(c1.cardNbr);
-    char s[2];
-    gets(s);
-    gets(s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
-    scanf("%s",s);
+    //fout(c1.cardNbr);
 
+    getchar();
+    getchar();
     return 0;
 }
 
