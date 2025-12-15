@@ -125,13 +125,12 @@ void fin(char s[INP_SIZE])
     }
     else
     {
+        #if DEBUG
+                error(1,"fin/fopen()");
+        #endif
         perror ("File error");
         exit(1);
     }
-
-#if DEBUG
-    if(InFile == NULL) error(1,"fin/fopen()");
-#endif
 
     fclose(InFile);
 }
