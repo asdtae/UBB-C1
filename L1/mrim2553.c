@@ -200,6 +200,6 @@ int main()
     printf("\n");
     ascii();
 
-//    getchar();
-//    getchar();
+    getchar();
+    getchar();
 }
