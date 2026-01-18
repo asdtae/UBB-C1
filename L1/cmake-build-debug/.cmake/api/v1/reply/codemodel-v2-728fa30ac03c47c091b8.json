@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/github/UBB-C1/L1/cmake-build-debug",
-		"source" : "D:/github/UBB-C1/L1"
+		"build" : "E:/GitHub/UBB-C1/L1/cmake-build-debug",
+		"source" : "E:/GitHub/UBB-C1/L1"
 	},
 	"version" : 
 	{

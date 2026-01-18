@@ -182,7 +182,7 @@ int* santaSim(int **p, int size, int start)
     #if DEBUG
     printf("\n%sRESULT:%s\n", Bright_Magenta, White);
     if (count == size) {
-        printf("%sSUCCESS! Done in %d steps.%s\n", Green, steps, White);
+        printf("%sSUCCESS! Done in %d steps.%s\n", Green, res[1], White);
     } else {
         printf("%sFAIL! [%d / %d]%s\n", Bright_Red, count, size, White);
     }
@@ -272,5 +272,8 @@ int main(void)
     fclose(InFile);
     fclose(NetFile);
     fclose(OutFile);
+
+    int tmp;
+    scanf("%d",&tmp);
     return 0;
 }
