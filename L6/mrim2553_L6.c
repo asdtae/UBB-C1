@@ -4,8 +4,8 @@
  *  mrim2553
  *
  *  References:
- *      (1) Conway's Game of Life rules
- *      (2) ANSI C Standard Library
+ *      (1) https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+ *      (2) 9 - Dinamikus memóriakezelés és Pointerek II.pdf
  *      (3) gemini - implementation logic
  */
 
